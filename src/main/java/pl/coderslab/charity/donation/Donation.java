@@ -1,18 +1,23 @@
 package pl.coderslab.charity.donation;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.institutions.Institution;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.security.SecureRandom;
+
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 
 @Entity
+@Data
 @AllArgsConstructor
 public class Donation {
 
@@ -20,17 +25,21 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer quantity;
+    @ElementCollection
+    @ManyToMany(mappedBy = "donations", cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
+    private Set<Category> categories = new HashSet<>();
 
-    Category categories;
-    Institution institution;
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
+    List<Institution> institutions;
+
+    private Integer quantity;
     private String street;
     private String city;
+    @Size(max = 7)
     private String zipCode;
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
+    @Size(max = 300)
     private String pickUpComment;
-
-
 
 }

@@ -1,14 +1,15 @@
 package pl.coderslab.charity.category;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import pl.coderslab.charity.donation.Donation;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
+@AllArgsConstructor
 @Entity
 public class Category {
 
@@ -17,5 +18,8 @@ public class Category {
     private Long id;
 
     private String name;
+    @ElementCollection
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
+    Set<Donation> donations = new HashSet<>();
 
 }

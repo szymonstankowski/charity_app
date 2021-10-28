@@ -18,6 +18,6 @@ public class Institution {
     private Long id;
 
     private String name;
-    @Size(max = 1000)
     private String description;
+
 }

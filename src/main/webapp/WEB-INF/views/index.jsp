@@ -42,9 +42,11 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em>${donations}</em>
 
             <h3>Oddanych worków</h3>
+
+
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
                 tempora!</p>
         </div>
@@ -107,6 +109,8 @@
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
             Możesz sprawdzić czym się zajmują.</p>
 
+
+
         <ul class="help--slides-items">
             <li>
                 <div class="col">
@@ -153,9 +157,8 @@
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="images/icon-facebook.svg"/></a> <a href="#"
-                                                                                            class="btn btn--small"><img
-                src="images/icon-instagram.svg"/></a>
+            <a href="#" class="btn btn--small"><img src= "<c:url value ="resources/images/icon-facebook.svg"/>"</a>
+            <a href="#" class="btn btn--small"><img src= "<c:url value ="images/icon-instagram.svg"/>"</a>
         </div>
     </div>
 </footer>
