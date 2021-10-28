@@ -22,13 +22,8 @@ public class HomeController {
     @RequestMapping("/home")
     public String homeAction(Model model){
 
-        List<Donation> donations = donationService.getDonations();
-
-
         model.addAttribute("institutions",institutionService.getInstitutions());
-        model.addAttribute("donations",donations.size());
-
-
+        model.addAttribute("donations",donationService.getDonations().size());
 
         return "index";
     }
