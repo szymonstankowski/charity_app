@@ -14,4 +14,8 @@ public class DonationService {
     public List<Donation> getDonations(){
         return donationRepository.findAll();
     }
+
+    public int itemsSum(){
+        return donationRepository.itemsSum();
+    }
 }

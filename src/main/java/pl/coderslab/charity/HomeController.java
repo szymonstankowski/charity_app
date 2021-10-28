@@ -19,12 +19,12 @@ public class HomeController {
     private final DonationService donationService;
 
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String homeAction(Model model){
 
         model.addAttribute("institutions",institutionService.getInstitutions());
         model.addAttribute("donations",donationService.getDonations().size());
-
+        model.addAttribute("itemsSum", donationService.itemsSum());
         return "index";
     }
     @RequestMapping("/about")

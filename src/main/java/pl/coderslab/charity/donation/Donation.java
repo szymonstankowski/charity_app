@@ -3,6 +3,7 @@ package pl.coderslab.charity.donation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.institutions.Institution;
@@ -19,6 +20,7 @@ import java.util.Set;
 
 @Entity
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class Donation {
 
