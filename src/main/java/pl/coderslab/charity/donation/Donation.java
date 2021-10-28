@@ -3,6 +3,7 @@ package pl.coderslab.charity.donation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.institutions.Institution;
 
@@ -37,7 +38,9 @@ public class Donation {
     private String city;
     @Size(max = 7)
     private String zipCode;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
+    @DateTimeFormat(pattern = "HH-mm")
     private LocalTime pickUpTime;
     @Size(max = 300)
     private String pickUpComment;
