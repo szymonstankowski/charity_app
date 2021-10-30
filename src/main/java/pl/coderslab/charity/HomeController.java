@@ -19,7 +19,6 @@ public class HomeController {
     private final InstitutionService institutionService;
     private final DonationService donationService;
 
-
     @RequestMapping("/")
     public String homeAction(Model model){
 
@@ -32,6 +31,4 @@ public class HomeController {
     public String about(Model model){
         return "about";
     }
-
-
 }

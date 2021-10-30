@@ -111,7 +111,6 @@
             Możesz sprawdzić czym się zajmują.</p>
 
 
-
         <ul class="help--slides-items">
         <c:forEach items="${institutions}" var ="i" step="2" varStatus="loopStatus">
             <li>
