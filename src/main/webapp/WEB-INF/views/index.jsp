@@ -66,22 +66,23 @@
 
     <div class="steps--container">
         <div class="steps--item">
-            <span class="icon icon--hands"></span>
+            <img src="<c:url value="resources/images/icon-hand.png"/>"/>
+
             <h3>Wybierz rzeczy</h3>
             <p>ubrania, zabawki, sprzęt i inne</p>
         </div>
         <div class="steps--item">
-            <span class="icon icon--arrow"></span>
+            <img src="<c:url value="resources/images/icon-arrow.png"/>"/>
             <h3>Spakuj je</h3>
             <p>skorzystaj z worków na śmieci</p>
         </div>
         <div class="steps--item">
-            <span class="icon icon--glasses"></span>
+            <img src="<c:url value="resources/images/icon-glasses.png"/>"/>
             <h3>Zdecyduj komu chcesz pomóc</h3>
             <p>wybierz zaufane miejsce</p>
         </div>
         <div class="steps--item">
-            <span class="icon icon--courier"></span>
+            <img src="<c:url value="resources/images/icon-courier.png"/>"/>
             <h3>Zamów kuriera</h3>
             <p>kurier przyjedzie w dogodnym terminie</p>
         </div>
@@ -112,30 +113,19 @@
 
 
         <ul class="help--slides-items">
+        <c:forEach items="${institutions}" var ="i" step="2" varStatus="loopStatus">
             <li>
                 <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
+                    <div class="title">Fundacja "${i.name}"</div>
+                    <div class="subtitle">Cel i misja: "${i.description}"</div>
                 </div>
 
                 <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
+                    <div class="title">Fundacja "${institutions[loopStatus.index+1].name}"</div>
+                    <div class="subtitle">Cel i misja: "${institutions[loopStatus.index+1].description}"</div>
                 </div>
             </li>
-
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                </div>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
-
-            </li>
-
+        </c:forEach>
         </ul>
     </div>
 
