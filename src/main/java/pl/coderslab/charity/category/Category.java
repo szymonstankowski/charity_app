@@ -3,13 +3,15 @@ package pl.coderslab.charity.category;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import pl.coderslab.charity.donation.Donation;
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
-@Data
+import javax.persistence.*;
+import java.util.List;
+
 @AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 public class Category {
 
@@ -18,8 +20,5 @@ public class Category {
     private Long id;
 
     private String name;
-    @ElementCollection
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
-    Set<Donation> donations = new HashSet<>();
 
 }

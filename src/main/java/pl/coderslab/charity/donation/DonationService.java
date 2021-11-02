@@ -18,4 +18,8 @@ public class DonationService {
     public int itemsSum(){
         return donationRepository.itemsSum();
     }
+
+    public void save(Donation donation){
+        donationRepository.save(donation);
+    }
 }
