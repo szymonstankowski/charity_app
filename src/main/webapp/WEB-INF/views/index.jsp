@@ -66,7 +66,7 @@
 
     <div class="steps--container">
         <div class="steps--item">
-            <img src="<c:url value="resources/images/icon-hand.png"/>"/>
+            <img src="<c:url value="resources/images/icon-hands.png"/>"/>
 
             <h3>Wybierz rzeczy</h3>
             <p>ubrania, zabawki, sprzęt i inne</p>
@@ -147,7 +147,7 @@
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
             <a href="#" class="btn btn--small"><img src= "<c:url value ="resources/images/icon-facebook.svg"/>"</a>
-            <a href="#" class="btn btn--small"><img src= "<c:url value ="images/icon-instagram.svg"/>"</a>
+            <a href="#" class="btn btn--small"><img src= "<c:url value ="resources/images/icon-instagram.svg"/>"</a>
         </div>
     </div>
 </footer>

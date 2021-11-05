@@ -3,10 +3,7 @@ package pl.coderslab.charity.institutions;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Data
@@ -14,6 +11,7 @@ import javax.persistence.Id;
 public class Institution {
 
     @Id
+    @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

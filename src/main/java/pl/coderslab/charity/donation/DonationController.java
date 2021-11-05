@@ -26,7 +26,7 @@ public class DonationController {
     @GetMapping("/donations")
     public String donationForm(Donation donation, Model model){
         model.addAttribute("donations", new Donation());
-        return "donation-form";
+        return "form";
     }
     @PostMapping("/addDonation")
     public String addDonation(@Valid Donation donation,   BindingResult result){

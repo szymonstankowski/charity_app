@@ -31,14 +31,13 @@ public class Donation {
 
 
     @ManyToMany
-    @JoinTable(name = "categories_donations",
-    joinColumns = @JoinColumn(name = "donation_id"),
-    inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @JoinColumn(name = "category_id")
     List<Category> categories = new ArrayList<>();
 
 
     @OneToOne
     Institution institutions;
+
 
     private Integer quantity;
     private String street;
@@ -51,6 +50,7 @@ public class Donation {
     private LocalTime pickUpTime;
     @Size(max = 300)
     private String pickUpComment;
+
 
 
 }
