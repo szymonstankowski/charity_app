@@ -44,7 +44,7 @@ public class Donation {
     private String city;
     @Size(max = 7)
     private String zipCode;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private LocalDate pickUpDate;
 
     private LocalTime pickUpTime;

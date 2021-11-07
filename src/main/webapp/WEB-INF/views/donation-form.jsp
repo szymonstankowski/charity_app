@@ -14,6 +14,9 @@
 
     <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 
+    <form action="form-confirmation.html" method="post">
+
+
 </head>
 <body>
 <%@ include file="header.jsp" %>

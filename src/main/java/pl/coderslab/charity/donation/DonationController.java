@@ -29,16 +29,14 @@ public class DonationController {
         return "form";
     }
     @PostMapping("/addDonation")
-    public String addDonation(@Valid Donation donation,   BindingResult result){
+    public String addDonation(Donation donation, BindingResult result){
         if (result.hasErrors()) {
             return "redirect:/donations";
         }
-
-
        donationService.save(donation);
         return "redirect:/donations";
     }
-
+    //<form action="form-confirmation.html" method="post">
     @ModelAttribute("categories")
     public List<Category> categories (){
         return categoryService.findAll();

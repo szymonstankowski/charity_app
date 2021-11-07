@@ -2,6 +2,8 @@ package pl.coderslab.charity.donation;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.category.Category;
+import pl.coderslab.charity.institutions.Institution;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class DonationService {
     }
 
     public void save(Donation donation){
+
         donationRepository.save(donation);
     }
 }
