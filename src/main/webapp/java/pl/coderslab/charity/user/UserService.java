@@ -4,20 +4,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
-@Service
-@AllArgsConstructor
-public class UserService {
 
-    private final static String USER_NOT_FOUND_MSG = "User %s not found";
+public interface UserService {
 
-    private final UserRepository userRepository;
+    void saveUser(User user);
 
-    public void saveUser(User user){
-        userRepository.save(user);
-    }
-
-    public User findUserByName(String userName){
-
-        return userRepository.findUserByName(userName).orElse(null);
-    }
+    User findUserByUserName(String userName);
 }

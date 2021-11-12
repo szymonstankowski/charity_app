@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -39,7 +40,7 @@
     <form method="post" action="/registerNewUser" modelAttribute="user"/>
 
     <div class="form-group">
-        <input type="name" path="name" name="username" placeholder="Username"/>
+        <input type="text" path="name" name="username" placeholder="Username"/>
     </div>
     <div class="form-group">
         <input type="email" path="email" name="email" placeholder="Email"/>

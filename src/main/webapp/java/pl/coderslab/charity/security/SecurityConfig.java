@@ -13,10 +13,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
 
-
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SpringDataUserDetailsService customUserDetailsService(){
+        return new SpringDataUserDetailsService();
     }
 
     @Override
@@ -25,7 +29,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.headers().disable();
         http.logout()
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/")
+        .and().exceptionHandling().accessDeniedPage("/403");
         http.authorizeRequests()
 
                 .antMatchers("/donations", "/addDonation").hasAnyRole("USER", "ADMIN")

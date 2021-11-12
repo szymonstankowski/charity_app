@@ -1,13 +1,14 @@
 package pl.coderslab.charity.user;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import pl.coderslab.charity.role.Role;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.Collection;
+import java.util.Set;
 
 
 @Data
@@ -23,6 +24,18 @@ public class User{
     @Email
     private String email;
     private String password;
-    private String role;
+    private int enabled;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+
+    public User(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    }
+
+    public User() {
+
+    }
 }
