@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -97,8 +98,8 @@
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
           <!-- STEP 1: class .active is switching steps -->
-
-        <form:form method="post" action="/addDonation" modelAttribute="donations">
+          <sec:authorize access="isAuthenticated()">
+          <form:form method="post" action="/addDonation" modelAttribute="donations">
           <div data-step="1" class="active">
 
             <h3>Zaznacz co chcesz oddać:</h3>
@@ -121,6 +122,7 @@
               <label>
                 Liczba 60l worków:
                 <form:input id="quantity" type="number" name="bags" path="quantity" step="1" min="1" />
+                </sec:authorize>
               </label>
             </div>
 
