@@ -12,7 +12,6 @@ import pl.coderslab.charity.institutions.Institution;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +34,9 @@ public class Donation {
     List<Category> categories = new ArrayList<>();
 
 
-    @OneToOne
-    Institution institutions;
+    @ManyToOne
+    @JoinColumn(name = "institution_id")
+    Institution institution;
 
 
     private Integer quantity;
@@ -44,7 +44,7 @@ public class Donation {
     private String city;
     @Size(max = 7)
     private String zipCode;
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 
     private LocalTime pickUpTime;

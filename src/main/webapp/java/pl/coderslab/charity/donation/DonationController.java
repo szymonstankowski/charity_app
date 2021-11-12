@@ -12,7 +12,6 @@ import pl.coderslab.charity.category.CategoryService;
 import pl.coderslab.charity.institutions.Institution;
 import pl.coderslab.charity.institutions.InstitutionService;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @AllArgsConstructor
@@ -24,18 +23,21 @@ public class DonationController {
     private final DonationService donationService;
 
     @GetMapping("/donations")
-    public String donationForm(Donation donation, Model model){
+    public String donationForm(Model model){
         model.addAttribute("donations", new Donation());
         return "form";
     }
+
     @PostMapping("/addDonation")
     public String addDonation(Donation donation, BindingResult result){
-        if (result.hasErrors()) {
+        if (result.hasErrors()){
             return "redirect:/donations";
         }
-       donationService.save(donation);
-        return "redirect:/donations";
+        donationService.save(donation);
+        return "form-confirmation";
     }
+
+
     //<form action="form-confirmation.html" method="post">
     @ModelAttribute("categories")
     public List<Category> categories (){
