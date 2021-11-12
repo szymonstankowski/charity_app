@@ -160,10 +160,24 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
 
+
+         document.querySelector("#quantity-result").innerHTML = document.querySelector("#quantity").value;
+         document.querySelector("#institutionName-result").innerHTML = document.querySelector("#institutionName").value;
+         document.querySelector("#street-result").innerHTML = document.querySelector("#street").value;
+         document.querySelector("#city-result").innerHTML = document.querySelector("#city").value;
+         document.querySelector("#zipCode-result").innerHTML = document.querySelector("#zipCode").value;
+         document.querySelector("#phoneNumber-result").innerHTML = document.querySelector("#phoneNumber").value;
+         document.querySelector("#pickUpDate-result").innerHTML = document.querySelector("#pickUpDate").value;
+         document.querySelector("#pickUpTime-result").innerHTML = document.querySelector("#pickUpTime").value;
+         document.querySelector("#additionalInfo-result").innerHTML = document.querySelector("#additionalInfo").value;
+
+
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+
+
     }
 
   }
@@ -171,4 +185,12 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form !== null) {
     new FormSteps(form);
   }
+        //todo zrobic prevent default
+
+
+
+        //todo zatwierdzenie formularza przez JS (sprawdzic github pet clinic)
+
+
+
 });
