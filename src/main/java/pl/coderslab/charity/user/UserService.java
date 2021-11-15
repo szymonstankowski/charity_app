@@ -1,13 +1,11 @@
 package pl.coderslab.charity.user;
 
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-
-
 
 public interface UserService {
 
-    void saveUser(User user);
+    void createUser(User user);
 
     User findUserByUserName(String userName);
+
+    User findUserByEmail(String email);
 }

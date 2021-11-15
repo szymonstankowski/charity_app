@@ -1,13 +1,10 @@
 package pl.coderslab.charity.user;
 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.coderslab.charity.role.Role;
 import pl.coderslab.charity.role.RoleRepository;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -25,20 +22,20 @@ public class UserServiceImpl implements UserService{
         this.passwordEncoder = passwordEncoder;
     }
 
-
     @Override
-    public void saveUser(User user) {
+    public void createUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEnabled(1);
-        Role userRole = roleRepository.findByName("ROLE_USER");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        user.setRoles(new HashSet<>(Arrays.asList(roleRepository.findByName("ROLE_USER"))));
         userRepository.save(user);
-
-
     }
 
     @Override
     public User findUserByUserName(String userName) {
         return userRepository.findUserByName(userName).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_EX, userName)));
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        return userRepository.findUserByEmail(email).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_EX, email)));
     }
 }

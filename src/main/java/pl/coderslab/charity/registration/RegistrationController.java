@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.user.User;
 
 import javax.validation.Valid;
@@ -20,20 +19,22 @@ public class RegistrationController {
     }
 
     @GetMapping("/register")
-    public String register(Model model){
+    public String registerForm(Model model){
         model.addAttribute("user", new User());
 
         return "register";
     }
 
-    @PostMapping("/registerNewUser")
-    public String register(@Valid User user, BindingResult result, Model model) {
+    @PostMapping("/register")
+    public String register(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "register";
         } else {
-            model.addAttribute("user", user);
+
+            //todo dlaczego nie zapisuje do DB?
+
             registrationService.register(user);
-            return "login";
+            return "redirect:/login";
         }
     }
 

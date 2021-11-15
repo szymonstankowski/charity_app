@@ -14,7 +14,7 @@ public class RegistrationService {
     }
 
     public void register(User user){
-        userService.saveUser(user);
+        userService.createUser(user);
     }
 
 }

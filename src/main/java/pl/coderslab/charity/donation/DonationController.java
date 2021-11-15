@@ -2,6 +2,7 @@ package pl.coderslab.charity.donation;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,10 @@ import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.category.CategoryService;
 import pl.coderslab.charity.institutions.Institution;
 import pl.coderslab.charity.institutions.InstitutionService;
+import pl.coderslab.charity.user.User;
+import pl.coderslab.charity.user.UserService;
 
+import java.security.Principal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -21,12 +25,17 @@ public class DonationController {
     private final CategoryService categoryService;
     private final InstitutionService institutionService;
     private final DonationService donationService;
+    private final UserService userService;
 
-    @GetMapping("/donations")
-    public String donationForm(Model model){
-        model.addAttribute("donations", new Donation());
-        return "form";
-    }
+
+//    @GetMapping("/donations")
+//    public String donationForm(Model model, Principal principal){
+//        String name = principal.getName();
+//        User user = userService.findUserByUserName(name);
+//        model.addAttribute("user", user);
+//        model.addAttribute("donations", new Donation());
+//        return "form";
+//    }
 
     @PostMapping("/addDonation")
     public String addDonation(Donation donation, BindingResult result){

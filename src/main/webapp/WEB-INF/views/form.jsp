@@ -37,9 +37,9 @@
         <li class="logged-user">
           Witaj ${user.name}
           <ul class="dropdown">
-            <li><a href="#">Profil</a></li>
-            <li><a href="#">Moje zbiórki</a></li>
-            <li><a href="#">Wyloguj</a></li>
+            <li><a href="/userprofile">Profil</a></li>
+            <li><a href="/mydonations">Moje zbiórki</a></li>
+            <li><a href="/logout">Wyloguj</a></li>
           </ul>
         </li>
       </ul>
@@ -99,7 +99,7 @@
 
           <!-- STEP 1: class .active is switching steps -->
           <sec:authorize access="isAuthenticated()">
-          <form:form method="post" action="/addDonation" modelAttribute="donations">
+          <form:form method="post" action="/addDonation" modelAttribute="donations"/>
           <div data-step="1" class="active">
 
             <h3>Zaznacz co chcesz oddać:</h3>
@@ -185,7 +185,7 @@
                 <div class="form-group form-group--inline">
                   <label>
                     Uwagi dla kuriera
-                    <form:textarea id="additionalInfo" path="pickUpComment" rows="5" name="additionalInfo"/></textarea>
+                    <form:textarea id="additionalInfo" path="pickUpComment" rows="5" name="additionalInfo"/>
                   </label>
                 </div>
               </div>
@@ -245,7 +245,7 @@
               <button type="submit" class="btn">Potwierdzam</button>
             </div>
           </div>
-          </form:form>
+          </form>
 
       </div>
     </section>

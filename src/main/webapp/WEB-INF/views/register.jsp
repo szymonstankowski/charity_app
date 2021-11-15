@@ -37,10 +37,10 @@
 <section class="login-page">
     <h2>Załóż konto</h2>
 
-    <form method="post" action="/registerNewUser" modelAttribute="user"/>
+    <form method="post" action="/register" modelAttribute="user"/>
 
     <div class="form-group">
-        <input type="text" path="name" name="username" placeholder="Username"/>
+        <input type="text" path="name" name="name" placeholder="Username"/>
     </div>
     <div class="form-group">
         <input type="email" path="email" name="email" placeholder="Email"/>
@@ -48,12 +48,8 @@
     <div class="form-group">
         <input type="password" id="password" path="password" name="password" placeholder="Password" required/>
     </div>
-    <div class="form-group">
-        <input type="password" id="password2" name="password2" placeholder="Repeat password" required/>
-    </div>
-
-    <div class="form-group form-group--buttons">
-        <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
+        <div class="form-group form-group--buttons">
+        <a href="/login" class="btn btn--without-border">Zaloguj się</a>
         <button class="btn" type="submit">Załóż konto</button>
     </div>
     <form/>
