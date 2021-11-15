@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.role.Role;
 import pl.coderslab.charity.user.User;
 import pl.coderslab.charity.user.UserService;
 
@@ -22,17 +23,31 @@ public class SpringDataUserDetailsService implements UserDetailsService {
         this.userService = userService;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//
+//        User user = userService.findUserByUserName(username);
+//        if (user == null) {
+//            throw new UsernameNotFoundException(username);
+//        }
+//        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+//        user.getRoles().forEach(r ->
+//                grantedAuthorities.add(new SimpleGrantedAuthority(r.getName())));
+//        return new CurrentUser(user.getEmail(),user.getPassword(),
+//                grantedAuthorities, user);
+//    }
 
-        User user = userService.findUserByUserName(username);
+    @Override
+    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
+        User user = userService.findUserByEmail(userEmail);
         if (user == null) {
-            throw new UsernameNotFoundException(username);
+            throw new UsernameNotFoundException(userEmail);
         }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        user.getRoles().forEach(r ->
-                grantedAuthorities.add(new SimpleGrantedAuthority(r.getName())));
-        return new CurrentUser(user.getName(),user.getPassword(),
-                grantedAuthorities, user);
+        for (Role role : user.getRoles()) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
     }
+
 }

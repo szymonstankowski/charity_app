@@ -18,6 +18,12 @@
         <ul class="nav--actions">
             <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
             <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+            <li>
+                <form action="/logout" method="post">
+                    <input type="submit" value="Wyloguj">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
+            </li>
         </ul>
 
         <ul>
@@ -30,6 +36,17 @@
         <sec:authorize access="isAuthenticated()">
             <p>Zalogowany jako: <sec:authentication property="principal.username"/></p>
             <p>Posiada role: <sec:authentication property="authorities"/></p>
+            <li>
+                <form action="/logout" method="post">
+                    <input type="submit" value="Wyloguj">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
+            </li>
+        </sec:authorize>
+
+        <sec:authorize access="isAnonymous()">
+            <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
+            <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
         </sec:authorize>
     </nav>
 

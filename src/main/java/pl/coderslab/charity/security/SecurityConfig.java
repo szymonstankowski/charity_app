@@ -27,10 +27,10 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 //       http.cors().disable();
 //        http.csrf().disable();
-//        http.headers().disable();
+        http.headers().disable();
 
         http.authorizeRequests()
-                .antMatchers("/aboutUs","/about", "/register", "/login","/institutions", "/").permitAll()
+                .antMatchers("/aboutUs","/about", "/register", "/login","/institutions", "/", "/resources/**", "/images/**").permitAll()
                 .antMatchers("/console","/").hasRole("ADMIN")
                 .antMatchers("/userprofile", "/donations", "/addDonation").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()

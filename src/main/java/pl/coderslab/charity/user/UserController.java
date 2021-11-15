@@ -23,11 +23,11 @@ public class UserController{
 
     //todo dlaczego po logowaniu dostaje blad login?error
 
-    @GetMapping("/userprofile")
-    public String userprofile(Model model, Principal principal){
-        User userByEmail = userService.findUserByEmail(principal.getName());
-        model.addAttribute("user", userByEmail);
-        model.addAttribute("donation", new Donation());
-        return "form";
-    }
+//    @GetMapping("/userprofile")
+//    public String userprofile(Model model, Principal principal){
+//        User userByEmail = userService.findUserByEmail(principal.getName());
+//        model.addAttribute("user", userByEmail);
+//        model.addAttribute("donation", new Donation());
+//        return "form";
+//    }
 }
