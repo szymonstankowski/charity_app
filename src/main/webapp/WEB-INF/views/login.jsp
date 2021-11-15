@@ -39,6 +39,7 @@
     </div>
     <div class="form-group">
       <input type="password" name="password" placeholder="Hasło" />
+
       <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
       <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </div>

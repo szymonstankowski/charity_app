@@ -5,8 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.charity.user.User;
 
+import javax.swing.*;
 import javax.validation.Valid;
 
 @Controller
@@ -28,9 +30,9 @@ public class RegistrationController {
     @PostMapping("/register")
     public String register(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
+            System.out.println("has");
             return "register";
         } else {
-
             //todo dlaczego nie zapisuje do DB?
 
             registrationService.register(user);
