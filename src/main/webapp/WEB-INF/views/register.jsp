@@ -37,22 +37,24 @@
 <section class="login-page">
     <h2>Załóż konto</h2>
 
-    <form method="post" action="/register" modelAttribute="user"/>
+    <form:form method="post" action="/register" modelAttribute="user">
+        <div class="form-group">
+            <form:input path="name" placeholder="imię"/>
+        </div>
 
-    <div class="form-group">
-        <input type="text" path="name" name="name" placeholder="Username"/>
-    </div>
-    <div class="form-group">
-        <input type="email" path="email" name="email" placeholder="Email"/>
-    </div>
-    <div class="form-group">
-        <input type="password" id="password" path="password" name="password" placeholder="Password" required/>
-    </div>
+        <div class="form-group">
+            <form:input path="email" placeholder="email"/>
+        </div>
+
+        <div class="form-group">
+            <form:input path="password" placeholder="password"/>
+        </div>
+
         <div class="form-group form-group--buttons">
-        <a href="/login" class="btn btn--without-border">Zaloguj się</a>
-        <button class="btn" type="submit">Załóż konto</button>
-    </div>
-    <form/>
+            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
+            <button class="btn" type="submit">Załóż konto</button>
+        </div>
+    </form:form>
 </section>
 
 <script src="resources/js/app.js"/>

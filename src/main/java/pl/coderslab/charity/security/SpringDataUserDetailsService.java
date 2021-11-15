@@ -13,23 +13,26 @@ import pl.coderslab.charity.user.UserService;
 import java.util.HashSet;
 import java.util.Set;
 
-@Service
 public class SpringDataUserDetailsService implements UserDetailsService {
 
     private UserService userService;
 
     @Autowired
-    public void setUserRepository(UserService userService){
+    public void setUserRepository(UserService userService) {
         this.userService = userService;
     }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         User user = userService.findUserByUserName(username);
-        if (user==null){throw new UsernameNotFoundException(username);}
+        if (user == null) {
+            throw new UsernameNotFoundException(username);
+        }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         user.getRoles().forEach(r ->
                 grantedAuthorities.add(new SimpleGrantedAuthority(r.getName())));
-        return (UserDetails) new CurrentUser(user.getName(), user.getPassword(), grantedAuthorities, user);
+        return new CurrentUser(user.getName(),user.getPassword(),
+                grantedAuthorities, user);
     }
 }
