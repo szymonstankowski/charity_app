@@ -21,7 +21,8 @@ public class UserController{
     }
 
 
-    //todo dlaczego po logowaniu dostaje blad login?error
+    //todo napisac admin check tak aby po zalogowaniu sie program sprawdzal role i kierowal na konsole admina lub na strone usera
+
 
 //    @GetMapping("/userprofile")
 //    public String userprofile(Model model, Principal principal){

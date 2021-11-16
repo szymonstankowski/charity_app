@@ -13,20 +13,7 @@
 </head>
 <body>
 <header>
-    <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-            <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
-        </ul>
-
-        <ul>
-            <li><a href="/" class="btn btn--without-border active">Start</a></li>
-            <li><a href="/about" class="btn btn--without-border">O co chodzi?</a></li>
-            <li><a href="/aboutUs" class="btn btn--without-border">O nas</a></li>
-            <li><a href="/institutions" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="/contact" class="btn btn--without-border">Kontakt</a></li>
-        </ul>
-    </nav>
+   <jsp:include page="header.jsp"/>
 </header>
 
 <section class="stats">
@@ -74,5 +61,8 @@
         </ul>
     </div>
 </section>
+<footer>
+    <jsp:include page="footer.jsp"/>
+</footer>
 </body>
 </html>

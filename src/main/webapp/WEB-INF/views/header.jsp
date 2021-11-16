@@ -1,10 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <nav class="container container--70">
+    <sec:authorize access="isAuthenticated()">
+        <h3><p>Zalogowany jako: <sec:authentication property="principal.username"/></p>
+            <p>Posiada role: <sec:authentication property="authorities"/></p></h3>
+
+        <%--            <form action="/logout" method="post">--%>
+        <%--                <input type="submit" value="Wyloguj">--%>
+        <%--                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
+        <%--            </form>--%>
+        <a href="/donations" class="btn btn--without-border active">Oddaj rzeczy</a>
+    </sec:authorize>
+
     <ul class="nav--actions">
         <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
         <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
@@ -23,19 +31,9 @@
         <li><a href="/institutions" class="btn btn--without-border">Fundacje i organizacje</a></li>
         <li><a href="/contact" class="btn btn--without-border">Kontakt</a></li>
     </ul>
-    <sec:authorize access="isAuthenticated()">
-        <p>Zalogowany jako: <sec:authentication property="principal.username"/></p>
-        <p>Posiada role: <sec:authentication property="authorities"/></p>
-        <li>
-            <form action="/logout" method="post">
-                <input type="submit" value="Wyloguj">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
-        </li>
-    </sec:authorize>
 
-    <sec:authorize access="isAnonymous()">
-        <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-        <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
-    </sec:authorize>
+    <%--    <sec:authorize access="isAnonymous()">--%>
+    <%--        <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>--%>
+    <%--        <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>--%>
+    <%--    </sec:authorize>--%>
 </nav>

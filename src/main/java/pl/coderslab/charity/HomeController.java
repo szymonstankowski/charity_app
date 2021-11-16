@@ -36,7 +36,7 @@ public class HomeController {
 
     @RequestMapping("/contact")
     public String contact(){
-        return "contact";
+        return "kontakt";
     }
 
     @ModelAttribute
