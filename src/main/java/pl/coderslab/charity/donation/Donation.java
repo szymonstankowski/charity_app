@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.institutions.Institution;
+import pl.coderslab.charity.user.User;
 
 
 import javax.persistence.*;
@@ -37,6 +38,9 @@ public class Donation {
     @ManyToOne
     @JoinColumn(name = "institution_id")
     Institution institution;
+
+    @ManyToOne
+    private User user;
 
 
     private Integer quantity;

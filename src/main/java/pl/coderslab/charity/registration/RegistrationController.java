@@ -33,8 +33,6 @@ public class RegistrationController {
             System.out.println("has");
             return "register";
         } else {
-            //todo dlaczego nie zapisuje do DB?
-
             registrationService.register(user);
             return "redirect:/login";
         }

@@ -1,6 +1,7 @@
 package pl.coderslab.charity.donation;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.category.CategoryService;
 import pl.coderslab.charity.institutions.Institution;
 import pl.coderslab.charity.institutions.InstitutionService;
+import pl.coderslab.charity.security.CurrentUser;
 import pl.coderslab.charity.user.User;
 import pl.coderslab.charity.user.UserService;
 
@@ -28,20 +30,20 @@ public class DonationController {
     private final UserService userService;
 
 
-//    @GetMapping("/donations")
-//    public String donationForm(Model model, Principal principal){
-//        String name = principal.getName();
-//        User user = userService.findUserByUserName(name);
-//        model.addAttribute("user", user);
-//        model.addAttribute("donations", new Donation());
-//        return "form";
-//    }
+    @GetMapping("/donations")
+    public String donationForm(Model model){
+        model.addAttribute("donation", new Donation());
+        return "form";
+    }
 
     @PostMapping("/addDonation")
-    public String addDonation(Donation donation, BindingResult result){
+    public String addDonation(Donation donation, BindingResult result,Principal principal){
         if (result.hasErrors()){
             return "redirect:/donations";
         }
+        String email = principal.getName();
+        User userByEmail = userService.findUserByEmail(email);
+        donation.setUser(userByEmail);
         donationService.save(donation);
         return "form-confirmation";
     }

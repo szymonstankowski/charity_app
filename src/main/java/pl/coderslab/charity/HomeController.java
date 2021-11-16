@@ -33,6 +33,7 @@ public class HomeController {
     public String institutions(){
         return "institutions";
     }
+
     @RequestMapping("/contact")
     public String contact(){
         return "contact";
@@ -40,6 +41,7 @@ public class HomeController {
 
     @ModelAttribute
     public void donations(Model model){
+        //todo dla sum zrobic jedno zapytanie ktore bedzie liczylo count z bazy a nie zaciagalo baze do listy
         model.addAttribute("donations",donationService.getDonations().size());
         model.addAttribute("institutions",institutionService.findAll());
         Integer sum = donationService.itemsSum();
