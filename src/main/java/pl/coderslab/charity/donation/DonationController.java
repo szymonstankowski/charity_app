@@ -29,17 +29,16 @@ public class DonationController {
     private final DonationService donationService;
     private final UserService userService;
 
-
-    @GetMapping("/donations")
+    @GetMapping("/donation")
     public String donationForm(Model model){
         model.addAttribute("donation", new Donation());
         return "form";
     }
 
-    @PostMapping("/addDonation")
+    @PostMapping("/adddonation")
     public String addDonation(Donation donation, BindingResult result,Principal principal){
         if (result.hasErrors()){
-            return "redirect:/donations";
+            return "redirect:/donation";
         }
         String email = principal.getName();
         User userByEmail = userService.findUserByEmail(email);
@@ -47,7 +46,6 @@ public class DonationController {
         donationService.save(donation);
         return "form-confirmation";
     }
-
 
     //<form action="form-confirmation.html" method="post">
     @ModelAttribute("categories")

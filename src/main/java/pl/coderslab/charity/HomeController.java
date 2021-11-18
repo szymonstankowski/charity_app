@@ -16,11 +16,16 @@ public class HomeController {
     private final DonationService donationService;
 
     @RequestMapping("/")
-    public String homeAction(){
+    public String homeAction(Model model){
+        model.addAttribute("donations",donationService.allDonationsSum());
+        model.addAttribute("institutions",institutionService.findAll());
+        model.addAttribute("itemsSum",donationService.itemsSum() );
         return "index";
     }
     @RequestMapping("/about")
-    public String about(){
+    public String about(Model model){
+        model.addAttribute("donations",donationService.allDonationsSum());
+        model.addAttribute("itemsSum",donationService.itemsSum() );
         return "about";
     }
 
@@ -30,7 +35,10 @@ public class HomeController {
     }
 
     @RequestMapping("/institutions")
-    public String institutions(){
+    public String institutions(Model model){
+        model.addAttribute("donations",donationService.allDonationsSum());
+        model.addAttribute("institutions",institutionService.findAll());
+        model.addAttribute("itemsSum",donationService.itemsSum());
         return "institutions";
     }
 
@@ -38,16 +46,4 @@ public class HomeController {
     public String contact(){
         return "kontakt";
     }
-
-    @ModelAttribute
-    public void donations(Model model){
-        //todo dla sum zrobic jedno zapytanie ktore bedzie liczylo count z bazy a nie zaciagalo baze do listy
-        model.addAttribute("donations",donationService.getDonations().size());
-        model.addAttribute("institutions",institutionService.findAll());
-        Integer sum = donationService.itemsSum();
-        model.addAttribute("itemsSum",sum );
-    }
-
-
-
 }

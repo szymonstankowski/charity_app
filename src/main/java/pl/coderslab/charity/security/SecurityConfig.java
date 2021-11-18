@@ -26,16 +26,16 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //       http.cors().disable();
-//        http.csrf().disable();
-      //  http.headers().disable();
+//       http.csrf().disable(
+//       http.headers().disable();
 
         http.authorizeRequests()
-                .antMatchers("/aboutUs","/about", "/register", "/login","/institutions", "/", "/resources/**", "/images/**").permitAll()
+                .antMatchers("/aboutUs","/about", "/register", "/login","/institutions","/contact", "/", "/resources/**", "/images/**","/check").permitAll()
                 .antMatchers("/console","/").hasRole("ADMIN")
-                .antMatchers("/userprofile", "/donations", "/addDonation").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/donation", "/adddonation", "/").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login")
-                .defaultSuccessUrl("/donations")
+                .defaultSuccessUrl("/check")
                 .and().logout().logoutSuccessUrl("/")
                 .permitAll();
     }

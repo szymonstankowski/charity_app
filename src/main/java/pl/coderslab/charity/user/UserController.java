@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.charity.donation.Donation;
+import pl.coderslab.charity.role.Role;
 
 import java.security.Principal;
+import java.util.Set;
 
 @Controller
 @AllArgsConstructor
 public class UserController{
+
     private final UserServiceImpl userService;
 
     @GetMapping("/login")
@@ -20,15 +23,16 @@ public class UserController{
         return "login";
     }
 
-
-    //todo napisac admin check tak aby po zalogowaniu sie program sprawdzal role i kierowal na konsole admina lub na strone usera
-
-
-//    @GetMapping("/userprofile")
-//    public String userprofile(Model model, Principal principal){
-//        User userByEmail = userService.findUserByEmail(principal.getName());
-//        model.addAttribute("user", userByEmail);
-//        model.addAttribute("donation", new Donation());
-//        return "form";
-//    }
+    @GetMapping("/check")
+    public String check(Principal principal){
+        String email = principal.getName();
+        User user = userService.findUserByEmail(email);
+        //TODO zamienic na stream??
+        Set<Role> roles = user.getRoles();
+        for (Role role : roles) {
+            if (role.getName().equals("ROLE_ADMIN")){
+                return "redirect:/admin";
+            }
+        }return "redirect:/donation";
+    }
 }

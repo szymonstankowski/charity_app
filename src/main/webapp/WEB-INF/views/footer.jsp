@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <div class="contact">
     <h2>Skontaktuj się z nami</h2>
     <h3>Formularz kontaktowy</h3>
@@ -15,7 +17,7 @@
 <div class="bottom-line">
     <span class="bottom-line--copy">Copyright &copy; 2018</span>
     <div class="bottom-line--icons">
-        <a href="#" class="btn btn--small"><img src="<c:url value ="resources/images/icon-facebook.svg"/>"</a>
-        <a href="#" class="btn btn--small"><img src="<c:url value ="resources/images/icon-instagram.svg"/>"</a>
+        <a href="https://www.facebook.com/" class="btn btn--small"><img src="<c:url value ="resources/images/icon-facebook.svg"/>"/></a>
+        <a href="https://www.instagram.com/" class="btn btn--small"><img src="<c:url value ="resources/images/icon-instagram.svg"/>"/></a>
     </div>
 </div>

@@ -73,7 +73,7 @@
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
         <sec:authorize access="isAuthenticated()">       <!-- STEP 1: class .active is switching steps -->
-        <form:form method="post" action="/addDonation" modelAttribute="donation">
+        <form:form method="post" action="/adddonation" modelAttribute="donation">
         <div data-step="1" class="active">
 
             <h3>Zaznacz co chcesz oddać:</h3>

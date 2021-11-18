@@ -3,6 +3,7 @@ package pl.coderslab.charity.donation;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Service
@@ -17,6 +18,9 @@ public class DonationService {
 
     public Integer itemsSum(){
         return donationRepository.itemsSum();
+    }
+    public Integer allDonationsSum(){
+        return donationRepository.allDonationsSum();
     }
 
     public void save(Donation donation){
