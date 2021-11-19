@@ -22,6 +22,6 @@
     <ul>
         <li><a href="/admin" class="btn btn--without-border active">Start</a></li>
         <li><a href="/users" class="btn btn--without-border">Uzytkownicy</a></li>
-        <li><a href="/institutions" class="btn btn--without-border">Institucje</a></li>
+        <li><a href="/adminInstitutions" class="btn btn--without-border">Institucje</a></li>
     </ul>
 </nav>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -13,9 +14,34 @@
     <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 </head>
 <body>
-<header class="header--main-page">
+<header>
     <jsp:include page="admin-header.jsp"/>
 </header>
+
+
+<body>
+<div class="stats--item">
+<ul class="help--slides-items">
+
+<c:forEach items="${users}" var="i">
+
+    <li>
+        <div class="col">
+            <a href="/users/delete/${i.id}" class="btn btn--small btn--highlighted">SET AS NOT ACTIVE</a></br>
+    <h3>
+
+        <div class="title">${i.name}</div>
+        <div class="subtitle">Email: "${i.email}</div>
+        <div class="subtitle">Role: "${i.roles.role}</div>
+    </h3>
+        </div>
+    </li>
+
+</c:forEach>
+</ul>
+</div>
+</body>
+
 
 <script src="<c:url value="resources/js/app.js"/>"></script>
 </body>

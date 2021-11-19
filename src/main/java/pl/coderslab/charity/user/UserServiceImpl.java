@@ -7,6 +7,7 @@ import pl.coderslab.charity.role.RoleRepository;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -38,4 +39,17 @@ public class UserServiceImpl implements UserService{
     public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_EX, email)));
     }
+
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
+    }
+
+    public List<User> userList(){
+        return userRepository.getUsers();
+    }
+
+    public List<User> adminList(){
+        return userRepository.getAdmins();
+    }
+
 }
