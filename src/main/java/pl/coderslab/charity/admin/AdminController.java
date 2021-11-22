@@ -17,6 +17,7 @@ public class AdminController {
 
     private final InstitutionService institutionService;
     private final UserServiceImpl userService;
+    private final AdminService adminService;
 
 
     @GetMapping("/admin")
@@ -38,10 +39,16 @@ public class AdminController {
         return "admin-institutions";
     }
 
-    //TODO napisac ustawianie Usera na NOT ACTIVE ALBO DISABLED
+    @GetMapping("/disableUser/{id}")
+    public String disableUser(@PathVariable Long id){
+        adminService.disableUser(id);
+        return "redirect:/users";
+    }
 
-
-
-
+    @GetMapping("/enableUser/{id}")
+    public String enableUser(@PathVariable Long id){
+        adminService.enableUser(id);
+        return "redirect:/users";
+    }
 
 }

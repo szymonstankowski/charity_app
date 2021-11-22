@@ -31,6 +31,9 @@ public class User{
     private Set<Role> roles;
 
 
+    private Integer active;
+
+
     public User(String username, String password, Collection<? extends GrantedAuthority> authorities) {
     }
 

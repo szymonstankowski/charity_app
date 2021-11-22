@@ -18,5 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "select * from user join user_role ur on user.id = ur.user_id where role_id =2", nativeQuery = true)
     List<User>getAdmins();
 
+    Optional<User> findUserById(Long id);
+
 
 }

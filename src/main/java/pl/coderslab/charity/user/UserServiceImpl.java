@@ -15,6 +15,8 @@ public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final Integer ACTIVE = 2;
+    private final Integer NOT_ACTIVE = 1;
     private final static String USER_NOT_FOUND_EX = "User %s is not found!";
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
@@ -27,6 +29,7 @@ public class UserServiceImpl implements UserService{
     public void createUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(new HashSet<>(Arrays.asList(roleRepository.findByName("ROLE_USER"))));
+        user.setActive(ACTIVE);
         userRepository.save(user);
     }
 
@@ -39,6 +42,12 @@ public class UserServiceImpl implements UserService{
     public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_EX, email)));
     }
+
+    @Override
+    public User findUserById(Long id) {
+        return userRepository.findUserById(id).orElse(null);
+    }
+
 
     public void deleteUser(Long id){
         userRepository.deleteById(id);
