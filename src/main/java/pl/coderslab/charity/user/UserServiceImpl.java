@@ -15,8 +15,7 @@ public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
-    private final Integer ACTIVE = 2;
-    private final Integer NOT_ACTIVE = 1;
+    private final Integer ACTIVE = 1;
     private final static String USER_NOT_FOUND_EX = "User %s is not found!";
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
@@ -46,6 +45,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public User findUserById(Long id) {
         return userRepository.findUserById(id).orElse(null);
+    }
+
+    public void updateUser(User user){
+        userRepository.save(user);
     }
 
 

@@ -17,10 +17,12 @@ public class AdminService {
     public void disableUser(Long id){
         User userById = userService.findUserById(id);
         userById.setActive(DISABLE_USER);
+        userService.updateUser(userById);
     }
 
     public void enableUser(Long id){
         User userById = userService.findUserById(id);
         userById.setActive(ENABLE_USER);
+        userService.updateUser(userById);
     }
 }

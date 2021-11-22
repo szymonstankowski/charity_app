@@ -39,6 +39,9 @@ public class AdminController {
         return "admin-institutions";
     }
 
+    //TODO metody Put nie dzialaja There was an unexpected error (type=Method Not Allowed, status=405).
+    //Request method 'GET' not supported
+
     @GetMapping("/disableUser/{id}")
     public String disableUser(@PathVariable Long id){
         adminService.disableUser(id);

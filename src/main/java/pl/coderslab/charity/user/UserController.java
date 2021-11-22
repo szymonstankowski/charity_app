@@ -18,6 +18,8 @@ public class UserController{
 
     private final UserServiceImpl userService;
 
+    //todo dodac sprawdzenie czy user jest active, jesli nie jest wyswietlic informacje o niekatywnym koncie
+
     @GetMapping("/login")
     public String login(){
         return "login";
@@ -27,7 +29,7 @@ public class UserController{
     public String check(Principal principal){
         String email = principal.getName();
         User user = userService.findUserByEmail(email);
-        //TODO zamienic na stream??
+        //TODO zamienic na stream?? wyrzucic to na service
         Set<Role> roles = user.getRoles();
         for (Role role : roles) {
             if (role.getName().equals("ROLE_ADMIN")){
