@@ -7,6 +7,7 @@
         <h3><p>Zalogowany jako: <sec:authentication property="principal.username"/></p>
             <p>Posiada role: <sec:authentication property="authorities"/></p></h3>
         <a href="/donation" class="btn btn--without-border active">Oddaj dary</a>
+        <a href="/userdonations" class="btn btn--without-border active">Moje donacje</a>
     </sec:authorize>
 
     <ul class="nav--actions">

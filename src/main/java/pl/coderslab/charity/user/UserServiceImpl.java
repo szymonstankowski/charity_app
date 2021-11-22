@@ -8,6 +8,7 @@ import pl.coderslab.charity.role.RoleRepository;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -39,7 +40,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User findUserByEmail(String email) {
-        return userRepository.findUserByEmail(email).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_EX, email)));
+               return userRepository.findUserByEmail(email).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_EX, email)));
+    }
+    public boolean checkUser(User user){
+        return user.getRoles().stream()
+                .anyMatch(role -> role.getName().equals("ROLE_ADMIN"));
+
     }
 
     @Override

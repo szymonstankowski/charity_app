@@ -7,34 +7,42 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.charity.donation.Donation;
+import pl.coderslab.charity.donation.DonationService;
 import pl.coderslab.charity.role.Role;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Set;
 
 @Controller
 @AllArgsConstructor
-public class UserController{
+public class UserController {
 
     private final UserServiceImpl userService;
+    private final DonationService donationService;
 
-    //todo dodac sprawdzenie czy user jest active, jesli nie jest wyswietlic informacje o niekatywnym koncie
+
 
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 
     @GetMapping("/check")
-    public String check(Principal principal){
+    public String check(Principal principal) {
+        if (userService.checkUser(userService.findUserByEmail(principal.getName()))) {
+            return "redirect:/admin";
+        }
+        return "redirect:/donation";
+    }
+
+    @GetMapping("/userdonations")
+    public String userdonations(Principal principal, Model model){
         String email = principal.getName();
-        User user = userService.findUserByEmail(email);
-        //TODO zamienic na stream?? wyrzucic to na service
-        Set<Role> roles = user.getRoles();
-        for (Role role : roles) {
-            if (role.getName().equals("ROLE_ADMIN")){
-                return "redirect:/admin";
-            }
-        }return "redirect:/donation";
+        User userByEmail = userService.findUserByEmail(email);
+        List<Donation> donationsByUser = donationService.getDonationsByUser(userByEmail);
+
+        model.addAttribute("donations", donationsByUser);
+        return "user-donations-list";
     }
 }
