@@ -1,9 +1,7 @@
 package pl.coderslab.charity.donation;
 
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +11,6 @@ import pl.coderslab.charity.category.Category;
 import pl.coderslab.charity.category.CategoryService;
 import pl.coderslab.charity.institutions.Institution;
 import pl.coderslab.charity.institutions.InstitutionService;
-import pl.coderslab.charity.security.CurrentUser;
 import pl.coderslab.charity.user.User;
 import pl.coderslab.charity.user.UserService;
 
@@ -55,6 +52,6 @@ public class DonationController {
 
     @ModelAttribute("institutions")
     public List<Institution> institutions (){
-        return institutionService.findAll();
+        return institutionService.findAllActive();
     }
 }

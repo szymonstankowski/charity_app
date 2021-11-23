@@ -23,14 +23,12 @@ public class RegistrationController {
     @GetMapping("/register")
     public String registerForm(Model model){
         model.addAttribute("user", new User());
-
         return "register";
     }
 
     @PostMapping("/register")
     public String register(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
-            System.out.println("has");
             return "register";
         } else {
             registrationService.register(user);

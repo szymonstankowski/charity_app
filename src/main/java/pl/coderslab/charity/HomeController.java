@@ -3,7 +3,6 @@ package pl.coderslab.charity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.donation.DonationService;
 import pl.coderslab.charity.institutions.InstitutionService;
@@ -18,7 +17,7 @@ public class HomeController {
     @RequestMapping("/")
     public String homeAction(Model model){
         model.addAttribute("donations",donationService.allDonationsSum());
-        model.addAttribute("institutions",institutionService.findAll());
+        model.addAttribute("institutions",institutionService.findAllActive());
         model.addAttribute("itemsSum",donationService.itemsSum() );
         return "index";
     }
@@ -37,7 +36,7 @@ public class HomeController {
     @RequestMapping("/institutions")
     public String institutions(Model model){
         model.addAttribute("donations",donationService.allDonationsSum());
-        model.addAttribute("institutions",institutionService.findAll());
+        model.addAttribute("institutions",institutionService.findAllActive());
         model.addAttribute("itemsSum",donationService.itemsSum());
         return "institutions";
     }

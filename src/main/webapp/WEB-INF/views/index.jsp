@@ -100,16 +100,16 @@
 
 
         <ul class="help--slides-items">
-        <c:forEach items="${institutions}" var ="user" step="2" varStatus="loopStatus">
+        <c:forEach items="${institutions}" var ="institution" step="2" varStatus="loopStatus">
             <li>
                 <div class="col">
-                    <div class="title">Fundacja "${user.name}"</div>
-                    <div class="subtitle">Cel i misja: "${user.description}"</div>
+                    <div class="title">${institution.name}</div>
+                    <div class="subtitle">${institution.description}</div>
                 </div>
 
                 <div class="col">
-                    <div class="title">Fundacja "${institutions[loopStatus.index+1].name}"</div>
-                    <div class="subtitle">Cel i misja: "${institutions[loopStatus.index+1].description}"</div>
+                    <div class="title">${institutions[loopStatus.index+1].name}</div>
+                    <div class="subtitle">${institutions[loopStatus.index+1].description}</div>
                 </div>
             </li>
         </c:forEach>
