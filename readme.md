@@ -5,6 +5,7 @@ Wykorzystane technologie:
 - Java
 - Spring Boot
 - Spring Data
+- Spring Security
 - MySQL
 - Hibernate
 - JSP
