@@ -3,6 +3,7 @@ package pl.coderslab.charity.user;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.exception.ApiRequestException;
 import pl.coderslab.charity.role.RoleRepository;
 
 import java.util.Arrays;
@@ -40,11 +41,21 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User findUserByEmail(String email) {
-               return userRepository.findUserByEmail(email).orElseThrow(()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_EX, email)));
+      return userRepository.findUserByEmail(email).orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_EX, email)));
+
+
     }
-    public boolean checkUser(User user){
-        return user.getRoles().stream()
+    public boolean checkUserAdmin(User user){
+           return user.getRoles().stream()
                 .anyMatch(role -> role.getName().equals("ROLE_ADMIN"));
+    }
+
+    public User findActiveUser(User user){
+        if (user.getActive().equals(1)){
+            return user;
+        }else {
+            throw new ApiRequestException("User zablokowany");
+        }
 
     }
 

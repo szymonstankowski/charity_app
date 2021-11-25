@@ -4,15 +4,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.charity.donation.Donation;
 import pl.coderslab.charity.donation.DonationService;
-import pl.coderslab.charity.role.Role;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @AllArgsConstructor
@@ -28,12 +25,22 @@ public class UserController {
         return "login";
     }
 
+
+    //todo jak lepiej obsluzyc ten wyjatek
     @GetMapping("/check")
-    public String check(Principal principal) {
-        if (userService.checkUser(userService.findUserByEmail(principal.getName()))) {
+    public String check(Principal principal){
+
+        User activeUser = userService.findActiveUser(userService.findUserByEmail(principal.getName()));
+        if (userService.checkUserAdmin(activeUser)) {
             return "redirect:/admin";
         }
+
         return "redirect:/donation";
+    }
+    @GetMapping("/error")
+    @ResponseBody
+    public String userBlocked(){
+        return "Uzytkownik zablokowany";
     }
 
     @GetMapping("/userdonations")

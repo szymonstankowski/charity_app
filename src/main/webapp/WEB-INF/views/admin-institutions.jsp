@@ -33,7 +33,7 @@
                     <h3>
                         <div class="title">${institution.name}</div>
                         <div class="subtitle">Email: ${institution.description}</div>
-                        <div class="subtitle">Active?: ${institution.active}</div>
+                        <div class="subtitle">Active?: ${institution.enable}</div>
                     </h3>
                 </div>
             </li>
