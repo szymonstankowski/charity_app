@@ -1,12 +1,11 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
+Aplikacja ma na celu ulatwienie oddawania niepotrzebnych, zalegajacych w domu rzeczy (zabawek, ubran i innych), ktore chcemy oddac do sprawdzonej instytucji, a nie kontenera. 
+Uzytkownik (nie musi byc zarejestrowany/zalogowany) po okresleniu kategorii zwracanych rzeczy, ilosci, wybranej oraganizacji ktorej chce je przekazac. Nie trzeba nigdzie jechac i zawozic rzeczy, zostana one odebrane pod wskazanym w fomularzu adresem. 
 
-
-Przed przystąpieniem do pracy  przeczytaj poniższe wskazówki.
-## Jak zacząć?
-
-1. Zaimportuj projekt jako projekt `Maven`, wg poniższych wskazówek:
-
-	* W `IntelliJ` wybieramy: `File –> New –> Project from Existing Sources...`
-	* Wskazujemy lokalizację katalogu ze sklonowanym projektem i zatwierdzamy.
-	* Następnie w nowym oknie wybieramy: `Import project from external model` i wskazujemy `Maven`
-	* Wybieramy kolejno opcje: `Next –> Next –> Next –> Finish`
+Wykorzystane technologie:
+- Java
+- Spring Boot
+- Spring Data
+- Spring Security
+- MySQL
+- Hibernate
+- JSP
