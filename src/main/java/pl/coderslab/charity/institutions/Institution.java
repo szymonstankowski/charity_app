@@ -17,6 +17,7 @@ public class Institution {
 
     private String name;
     private String description;
-    private Integer active;
+    private Integer enable;
+
 
 }

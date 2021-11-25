@@ -17,7 +17,7 @@ public class InstitutionService {
 
 
     public void addInstitution(Institution institution) {
-        institution.setActive(ENABLE);
+        institution.setEnable(ENABLE);
         institutionRepository.save(institution);
     }
 
@@ -27,11 +27,7 @@ public class InstitutionService {
     }
 
     public List<Institution> findAllActive() {
-
-        List<Institution> institutions = institutionRepository.findAll();
-        return institutions.stream()
-                .filter(institution -> institution.getActive().equals(1))
-                .collect(Collectors.toList());
+        return institutionRepository.findEnabled();
     }
 
     public List<Institution> findAll(){

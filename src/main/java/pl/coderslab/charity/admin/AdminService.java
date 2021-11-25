@@ -31,13 +31,13 @@ public class AdminService {
 
     public void disableInstitution(Long id){
         Institution institution = institutionService.findById(id);
-        institution.setActive(DISABLE);
+        institution.setEnable(DISABLE);
         institutionService.updateInstitution(institution);
     }
 
     public void enableInstitution(Long id){
         Institution institution = institutionService.findById(id);
-        institution.setActive(ENABLE);
+        institution.setEnable(ENABLE);
         institutionService.updateInstitution(institution);
     }
 
